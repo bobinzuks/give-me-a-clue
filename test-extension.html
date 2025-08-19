@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claude Code Navigator Test Page</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        .test-button {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            background: #357ABD;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+        }
+        #status {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+        .search-box {
+            background: #fff;
+            border: 2px solid #4A90E2;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Claude Code Navigator Test Page</h1>
+    
+    <div id="status">
+        <h2>Extension Status</h2>
+        <p>Open browser console (F12) to see connection status</p>
+        <p>The extension should auto-connect to ws://localhost:8765</p>
+    </div>
+    
+    <div class="search-box">
+        <h3>Test Search Box (like Stripe)</h3>
+        <input type="search" id="search-input" placeholder="Type 'checkout.session.completed'">
+        <button class="test-button" onclick="alert('Search clicked!')">Search</button>
+    </div>
+    
+    <div>
+        <h3>Test Checkboxes (like Stripe events)</h3>
+        <label>
+            <input type="checkbox" value="checkout.session.completed">
+            checkout.session.completed
+        </label><br>
+        <label>
+            <input type="checkbox" value="payment_intent.succeeded">
+            payment_intent.succeeded
+        </label><br>
+        <label>
+            <input type="checkbox" value="payment_intent.payment_failed">
+            payment_intent.payment_failed
+        </label><br>
+        <label>
+            <input type="checkbox" value="v2.core.account_person.deleted">
+            v2.core.account_person.deleted (WRONG - don't select)
+        </label>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <button class="test-button" id="continue-btn">Continue</button>
+        <button class="test-button" onclick="location.reload()">Reload Page</button>
+    </div>
+    
+    <script>
+        // Check if extension is injected
+        setTimeout(() => {
+            if (window.ws || document.querySelector('[data-claude-navigator]')) {
+                document.getElementById('status').innerHTML += '<p style="color: green">✅ Extension detected!</p>';
+            } else {
+                document.getElementById('status').innerHTML += '<p style="color: red">❌ Extension not detected. Make sure to load it in about:debugging</p>';
+            }
+        }, 1000);
+        
+        // Log to console
+        console.log('Test page loaded. Extension should connect automatically.');
+        
+        // Continue button
+        document.getElementById('continue-btn').addEventListener('click', () => {
+            const selected = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                selected.push(cb.value);
+            });
+            alert('Selected events: ' + selected.join(', '));
+        });
+    </script>
+</body>
+</html>

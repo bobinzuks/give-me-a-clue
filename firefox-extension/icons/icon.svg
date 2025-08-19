@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#4A90E2"/>
+  <text x="64" y="64" text-anchor="middle" dominant-baseline="middle" 
+        font-family="Arial" font-size="48" font-weight="bold" fill="white">CC</text>
+  <path d="M 20 90 L 40 70 L 30 70 L 50 50 L 40 50 L 64 30 L 88 50 L 78 50 L 98 70 L 88 70 L 108 90" 
+        stroke="white" stroke-width="2" fill="none"/>
+</svg>

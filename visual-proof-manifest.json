@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "Claude Code Visual Proof Navigator",
+  "version": "2.0.0",
+  "description": "Enhanced Firefox extension with comprehensive visual proof system for AI-assisted web navigation",
+  
+  "permissions": [
+    "activeTab",
+    "tabs", 
+    "storage",
+    "<all_urls>",
+    "webNavigation",
+    "nativeMessaging",
+    "screenshots"
+  ],
+  
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": true
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["visual-proof-content.js"],
+      "css": ["content/overlay.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  
+  "browser_action": {
+    "default_title": "Claude Code Visual Proof Navigator",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png", 
+      "128": "icons/icon-128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  
+  "web_accessible_resources": [
+    "content/overlay.css",
+    "visual-proof-content.js"
+  ]
+}

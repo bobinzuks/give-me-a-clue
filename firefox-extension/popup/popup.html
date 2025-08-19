@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .status {
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    .connected {
+      background: #d4edda;
+      color: #155724;
+    }
+    .disconnected {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Claude Code Navigator</h2>
+  
+  <div id="status" class="status disconnected">
+    Disconnected
+  </div>
+  
+  <button id="connect">Connect to Claude Code</button>
+  <button id="screenshot">Take Screenshot</button>
+  <button id="scrape">Send Page to Claude</button>
+  <button id="clear">Clear Overlays</button>
+  
+  <div class="info">
+    <p>Server Port: 8765</p>
+    <p>Make sure the WebSocket server is running</p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
